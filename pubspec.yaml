@@ -14,11 +14,30 @@ dependencies:
   dio: ^5.8.0+1
   flutter_riverpod: ^2.6.1
   google_fonts: ^6.2.1
+  flutter_launcher_icons: ^0.14.3
 
 dev_dependencies:
   flutter_lints: ^4.0.0
   flutter_test:
     sdk: flutter
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/icon.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "assets/icon/icon.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
+  windows:
+    generate: true
+    image_path: "assets/icon/icon.png"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path: "assets/icon/icon.png"
 
 flutter:
   uses-material-design: true
@@ -26,4 +45,5 @@ flutter:
   assets:
     - assets/loaders/
     - assets/images/
+    - assets/icon/
     - google_fonts/montserrat_alternates/
