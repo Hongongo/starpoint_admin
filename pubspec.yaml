@@ -16,6 +16,7 @@ dependencies:
   google_fonts: ^6.2.1
   flutter_launcher_icons: ^0.14.3
   formz: ^0.8.0
+  flutter_dotenv: ^5.2.1
 
 dev_dependencies:
   flutter_lints: ^4.0.0
@@ -44,6 +45,7 @@ flutter:
   uses-material-design: true
 
   assets:
+    - .env
     - assets/loaders/
     - assets/images/
     - assets/icon/
