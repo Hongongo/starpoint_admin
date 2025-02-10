@@ -3,6 +3,11 @@ import 'package:formz/formz.dart';
 
 import 'package:starpoint_admin/features/shared/shared.dart';
 
+final loginFormProvider =
+    StateNotifierProvider.autoDispose<LoginFormNotifier, LoginFormState>((ref) {
+  return LoginFormNotifier();
+});
+
 class LoginFormState {
   final bool isPosting;
   final bool isFormPosted;
@@ -85,10 +90,3 @@ class LoginFormNotifier extends StateNotifier<LoginFormState> {
     );
   }
 }
-
-final loginFormProvider =
-    StateNotifierProvider.autoDispose<LoginFormNotifier, LoginFormState>(
-  (ref) {
-    return LoginFormNotifier();
-  },
-);
