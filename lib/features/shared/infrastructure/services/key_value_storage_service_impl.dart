@@ -11,18 +11,30 @@ class KeyValueStorageServiceImpl extends KeyValueStorageService {
   Future<T?> getValue<T>(String key) async {
     final prefs = await getSharedPrefs();
 
-    switch (T) {
-      case int:
-        return prefs.getInt(key) as T;
-
-      case String:
-        return prefs.getString(key) as T;
-
-      default:
-        throw UnimplementedError(
-          'GET not implemented for type ${T.runtimeType}',
-        );
+    if (T == String) {
+      final prefsResult = prefs.getString(key);
+      return prefsResult != null ? prefsResult as T : null;
+    } else if (T == int) {
+      final prefsResult = prefs.getInt(key);
+      return prefsResult != null ? prefsResult as T : null;
+    } else {
+      throw UnimplementedError(
+        'GET not implemented for type ${T.runtimeType}',
+      );
     }
+
+    // switch (T) {
+    //   case int _:
+    //     return prefs.getInt(key) as T;
+
+    //   case String _:
+    //     return prefs.getString(key) as T;
+
+    //   default:
+    //     throw UnimplementedError(
+    //       'GET not implemented for type ${T.runtimeType}',
+    //     );
+    // }
   }
 
   @override
