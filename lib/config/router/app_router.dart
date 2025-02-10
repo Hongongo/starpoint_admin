@@ -4,8 +4,13 @@ import '../../features/auth/auth.dart';
 import '../../features/products/products.dart';
 
 final appRouter = GoRouter(
-  initialLocation: '/login',
+  initialLocation: '/splash',
   routes: [
+    ///* Primera pantalla
+    GoRoute(
+      path: '/splash',
+      builder: (context, state) => const CheckAuthStatusScreen(),
+    ),
 
     ///* Auth Routes
     GoRoute(
@@ -23,5 +28,6 @@ final appRouter = GoRouter(
       builder: (context, state) => const ProductsScreen(),
     ),
   ],
+
   ///! TODO: Bloquear si no se está autenticado de alguna manera
 );
