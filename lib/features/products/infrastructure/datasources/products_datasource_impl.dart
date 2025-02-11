@@ -2,7 +2,8 @@ import 'package:dio/dio.dart';
 
 import 'package:starpoint_admin/config/config.dart';
 import 'package:starpoint_admin/features/products/domain/domain.dart';
-import 'package:starpoint_admin/features/products/infrastructure/mappers/product_mapper.dart';
+import '../mappers/product_mapper.dart';
+import '../errors/product_errors.dart';
 
 class ProductsDatasourceImpl extends ProductsDatasource {
   late final Dio dio;
@@ -24,9 +25,17 @@ class ProductsDatasourceImpl extends ProductsDatasource {
   }
 
   @override
-  Future<Product> getProductById(String id) {
-    // TODO: implement getProductById
-    throw UnimplementedError();
+  Future<Product> getProductById(String id) async {
+    try {
+      final response = await dio.get('/products/$id');
+      final product = ProductMapper.jsonToEntity(response.data);
+      return product;
+    } on DioException catch (e) {
+      if (e.response!.statusCode == 404) throw ProductNotFound();
+      throw Exception();
+    } catch (e) {
+      throw Exception();
+    }
   }
 
   @override
@@ -36,7 +45,7 @@ class ProductsDatasourceImpl extends ProductsDatasource {
       '/products?limit=$limit&offset=$offset',
     );
     final List<Product> products = [];
-    for (final product in response.data ?? []){
+    for (final product in response.data ?? []) {
       products.add(ProductMapper.jsonToEntity(product));
     }
 
