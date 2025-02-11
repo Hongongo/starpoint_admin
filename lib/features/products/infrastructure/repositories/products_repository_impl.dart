@@ -6,7 +6,7 @@ class ProductsRepositoryImpl extends ProductsRepository {
   
   @override
   Future<Product> createUpdateProduct(Map<String, dynamic> productLike) {
-    return createUpdateProduct(productLike);
+    return datasource.createUpdateProduct(productLike);
   }
 
   @override
