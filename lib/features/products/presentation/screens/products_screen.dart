@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../shared/shared.dart';
 import '../providers/providers.dart';
+import '../widgets/widgets.dart';
 
 class ProductsScreen extends StatelessWidget {
   const ProductsScreen({super.key});
@@ -64,7 +65,11 @@ class _ProductsViewState extends ConsumerState<_ProductsView> {
     final productsState = ref.watch(productsProvider);
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.only(
+        left: 10,
+        right: 10,
+        bottom: 30,
+      ),
       child: MasonryGridView.count(
         controller: scrollController,
         physics: const BouncingScrollPhysics(),
@@ -75,10 +80,10 @@ class _ProductsViewState extends ConsumerState<_ProductsView> {
         itemBuilder: (context, index) {
           final product = productsState.products[index];
           return GestureDetector(
-            onTap: () => context.push('/product/${product.id}'),
-            // child: ProductCard(product: product)
-            child: Text(product.title),
-          );
+              onTap: () => context.push('/product/${product.id}'),
+              child: ProductCard(product: product)
+              // child: Text(product.title),
+              );
         },
       ),
     );
