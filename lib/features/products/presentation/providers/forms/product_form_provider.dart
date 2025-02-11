@@ -1,7 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:formz/formz.dart';
 
-import 'package:starpoint_admin/config/config.dart';
+
+import '../../../../../config/constants/environment.dart';
 import '../../../../shared/shared.dart';
 import '../../../../products/domain/domain.dart';
 import '../../../../products/presentation/providers/providers.dart';
@@ -42,7 +43,6 @@ class ProductFormNotifier extends StateNotifier<ProductFormState> {
     _touchedEverything();
     if (!state.isFormValid) return false;
 
-    // TODO: regresar
     if (onSubmitCallback == null) return false;
 
     final productLike = {
