@@ -44,7 +44,7 @@ class ProductScreen extends ConsumerWidget {
                 .read(productFormProvider(productState.product!).notifier)
                 .onFormSubmit()
                 .then((value) {
-              if (!value) return;
+              if (!value || !context.mounted) return;
               showSnackbar(context);
             });
           },
