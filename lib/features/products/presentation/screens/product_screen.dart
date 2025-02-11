@@ -63,7 +63,6 @@ class _ProductView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final productForm = ref.watch(productFormProvider(product));
-
     final textStyles = Theme.of(context).textTheme;
 
     return ListView(
@@ -75,11 +74,12 @@ class _ProductView extends ConsumerWidget {
         ),
         const SizedBox(height: 10),
         Center(
-            child: Text(
-          productForm.title.value,
-          style: textStyles.titleSmall,
-          textAlign: TextAlign.center,
-        )),
+          child: Text(
+            productForm.title.value,
+            style: textStyles.titleSmall,
+            textAlign: TextAlign.center,
+          ),
+        ),
         const SizedBox(height: 10),
         _ProductInformation(product: product),
       ],
@@ -218,8 +218,10 @@ class _GenderSelector extends StatelessWidget {
     Icons.boy,
   ];
 
-  const _GenderSelector(
-      {required this.selectedGender, required this.onGenderChanged});
+  const _GenderSelector({
+    required this.selectedGender,
+    required this.onGenderChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
