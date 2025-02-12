@@ -16,3 +16,10 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 <a>
+
+
+## Change splash screen
+
+```
+dart run flutter_native_splash:create --path=flutter_native_splash.yaml
+```
