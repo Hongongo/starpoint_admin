@@ -1,7 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:formz/formz.dart';
 
-
 import '../../../../../config/constants/environment.dart';
 import '../../../../shared/shared.dart';
 import '../../../../products/domain/domain.dart';
@@ -77,6 +76,10 @@ class ProductFormNotifier extends StateNotifier<ProductFormState> {
         Stock.dirty(state.inStock.value),
       ]),
     );
+  }
+
+  void updateProductImage(String path) {
+    state = state.copyWith(images: [...state.images, path]);
   }
 
   void onTitleChanged(String value) {
